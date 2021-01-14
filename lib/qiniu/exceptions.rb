@@ -38,8 +38,7 @@ module Qiniu
 
     class UploadFailedError < Exception
       def initialize(status_code, response_data)
-        data_string = response_data.map { |key, value| %Q(:#{key.to_s} => #{value.to_s}) }
-        msg = %Q(Uploading Failed. HTTP Status Code: #{status_code}. HTTP response body: #{data_string.join(', ')}.)
+        msg = %Q(Uploading Failed. HTTP Status Code: #{status_code}. HTTP response body: #{response_data.inspect}.)
         super(msg)
       end
     end
